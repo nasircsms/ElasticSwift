@@ -199,7 +199,6 @@ public struct BulkRequest: Request {
 
         enum CodingKeys: String, CodingKey {
             case index = "_index"
-            case type = "_type"
             case id = "_id"
         }
 
@@ -207,7 +206,6 @@ public struct BulkRequest: Request {
             var container = encoder.container(keyedBy: DynamicCodingKeys.self)
             var nested = container.nestedContainer(keyedBy: CodingKeys.self, forKey: .key(named: opType.rawValue))
             try nested.encode(index, forKey: .index)
-//            try nested.encode(type, forKey: .type)
             try nested.encodeIfPresent(id, forKey: .id)
         }
     }
