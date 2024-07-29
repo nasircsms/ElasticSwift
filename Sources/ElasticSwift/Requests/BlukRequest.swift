@@ -194,12 +194,13 @@ public struct BulkRequest: Request {
     struct ActionAndMetaData: Encodable {
         public let opType: OpType
         public let index: String
-        public let type: String
+        public let type: String?
         public let id: String?
 
         enum CodingKeys: String, CodingKey {
             case index = "_index"
             case id = "_id"
+            case type = "_type"
         }
 
         public func encode(to encoder: Encoder) throws {

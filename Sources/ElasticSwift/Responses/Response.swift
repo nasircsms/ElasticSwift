@@ -40,7 +40,7 @@ public struct GetResponse<T: Codable>: Codable, Equatable where T: Equatable {
 public struct IndexResponse: Codable, Equatable {
     public let shards: Shards
     public let index: String
-    public let type: String
+    public let type: String?
     public let id: String
     public let version: Int
     public let seqNumber: Int
@@ -420,7 +420,7 @@ extension NestedIdentity: Equatable {
 public struct DeleteResponse: Codable, Equatable {
     public let shards: Shards
     public let index: String
-    public let type: String
+    public let type: String?
     public let id: String
     public let version: Int
     public let seqNumber: Int
@@ -563,7 +563,7 @@ public struct MultiGetItemResponse: Codable, Equatable {
 public struct UpdateResponse: Codable, Equatable {
     public let shards: Shards
     public let index: String
-    public let type: String
+    public let type: String?
     public let id: String
     public let version: Int
     public let result: String
@@ -624,7 +624,7 @@ public struct ReIndexResponse: Codable, Equatable {
 public struct TermVectorsResponse: Codable, Equatable {
     public let id: String?
     public let index: String
-    public let type: String
+    public let type: String?
     public let version: Int?
     public let found: Bool
     public let took: Int
@@ -799,7 +799,7 @@ public struct BulkResponse: Codable {
 
     public struct SuccessResponse: Codable, Equatable {
         public let index: String
-        public let type: String
+        public let type: String?
         public let id: String
         public let status: Int
         public let result: Result
@@ -823,7 +823,7 @@ public struct BulkResponse: Codable {
 
     public struct Failure: Codable, Equatable {
         public let index: String
-        public let type: String
+        public let type: String?
         public let id: String
         public let cause: ElasticError
         public let status: Int
@@ -885,7 +885,7 @@ extension CountResponse: Equatable {}
 
 public struct ExplainResponse: Codable {
     public let index: String
-    public let type: String
+    public let type: String?
     public let id: String
     public let matched: Bool
     public let explanation: Explanation
